@@ -27,8 +27,12 @@
 /* Layout Style */
 
 div, ul, li {background-size: cover; background-repeat: no-repeat; background-position: center;}
+div { display: block;}
+
+button { border: 0; background: none; cursor: pointer;}
 
 /* Text Style */
 
+body { font-size: 14px;}
 
 /* Color Style */
