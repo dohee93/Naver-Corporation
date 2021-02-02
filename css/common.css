@@ -1,0 +1,38 @@
+
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: url("../font/NanumBarunGothic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'NanumSquare-L';
+  src: url("../font/NanumSquareOTFLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'NanumSquare';
+  src: url("../font/NanumSquareOTFRegular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'NanumSquare-B';
+  src: url("../font/NanumSquareOTFBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'NanumSquare-EB';
+  src: url("../font/NanumSquareOTFExtraBold.woff") format("woff");
+}
+
+/* Layout Style */
+
+div, ul, li {background-size: cover; background-repeat: no-repeat; background-position: center;}
+div { display: block;}
+
+button { border: 0; background: none; cursor: pointer;}
+
+/* Text Style */
+
+body { font-size: 14px;}
+
+/* Color Style */
