@@ -165,8 +165,13 @@
    font-size: 15px; 
    color: rgb(135,136,144); 
    line-height: 1.6; 
-   overflow: hidden; 
+   
+   overflow: hidden;
+   text-overflow: ellipsis; 
    word-break: break-all; 
+   display: -webkit-box;
+   -webkit-box-orient : vertical;
+   -webkit-line-clamp: 2;
 }
 
 .news_box a:hover .news_title { 
@@ -182,7 +187,11 @@
    font-size: 18px; 
    color: rgb(51,51,51); 
    overflow: hidden; 
+   text-overflow: ellipsis;
    word-break: break-all; 
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 3;
 }
 
 /* Content Summary - Stock CSS */
@@ -202,8 +211,8 @@
 
 .summary_stock .stock_info_box .stock_price_box:before { 
    content: ''; 
-   display: block; 
-   position: absolute; 
+   display: block;
+   position: absolute;
    left: 0; 
    bottom: 0; 
    width: 100%; 
@@ -231,19 +240,16 @@
 }
 
 .summary_stock .stock_info_box .figure.type2:before { 
+   content: '';
+   position: absolute;
+   left: 0;
+   top: 50%;
+   margin: -3px 0 0 5px;
    width: 10px; 
    height: 6px; 
    background-image: url(../img/sprite.png); 
    background-size: 474px 1400px; 
    background-position: -318px -26px;
-}
-
-.figure:before { 
-   content: ''; 
-   position: absolute; 
-   left: 0; 
-   top: 50%; 
-   margin: -3px 0 0 5px;
 }
 
 .summary_stock .stock_info_box .date { 
@@ -373,6 +379,7 @@
    background-color: rgba( 58, 62, 80, 0.5); 
    font-size: 15px; 
    opacity: 0;
+   transition: opacity .3s;
 }
 
 .service_thumbnail_box:hover .thumbnail_dimmed {
