@@ -9,7 +9,6 @@ footer {
    max-width: 1600px;
    margin: 0 auto;
    padding: 74px 0 70px;
-   text-align: center;
 }
 
 .footer_wrap .footer_logo {
@@ -17,11 +16,10 @@ footer {
    left: 30px;
    top: 76px;
    width: 63px;
-   height: 13px;
+   height: 13px;   
    margin: 0 auto;
    background-image: url(../img/footer_logo.png);
    background-repeat: no-repeat;
-   background-size: 63px 13px;
 }
 
 .footer_wrap .footer_menu {
