@@ -1,0 +1,91 @@
+/* FOOTER CSS */
+footer {
+   width: 100%;
+   background-color: rgb(248, 249, 250);
+}
+
+.footer_wrap {
+   position: relative;
+   max-width: 1600px;
+   margin: 0 auto;
+   padding: 74px 0 70px;
+}
+
+.footer_wrap .footer_logo {
+   position: absolute;
+   left: 30px;
+   top: 76px;
+   width: 63px;
+   height: 13px;   
+   margin: 0 auto;
+   background-image: url(../img/footer_logo.png);
+   background-repeat: no-repeat;
+}
+
+.footer_wrap .footer_menu {
+   position: absolute;
+   left: 105px;
+   top: 74px;
+   display: flex;
+}
+
+.footer_menu li {
+   position: relative;
+   margin: 0 10px;
+}
+
+.footer_menu li:before {
+   content: '';
+   position: absolute;
+   display: block;
+   top: 3px;
+   left: -10px;
+   width: 1px;
+   height: 12px;
+   background-color: rgb(223,224,225);
+}
+
+.footer_menu li:first-child:before {
+   display: none;
+}
+
+.footer_menu li a {
+   color: rgb(135,136,144);
+}
+
+.footer_menu li:nth-child(3) {
+   font-weight: 700;
+}
+
+.footer_wrap .footer_copy {
+   margin: 0 auto;
+   width: 337px;
+   height: 16px;
+   background-image: url(../img/footer_copy.png);
+   overflow: hidden;
+   background-size: 337px 16px;
+}
+
+.footer_wrap .footer_affiliate {
+   position: absolute;
+   top: 74px;
+   right: 30px;
+}
+
+.footer_affiliate .btn_affiliate {
+   position: relative;
+   padding-right: 26px;
+   font-weight: 400;
+}
+
+.footer_affiliate .btn_affiliate:before {
+   content: '';
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 16px;
+   height: 16px;
+   background-image: url(../img/sprite.png);
+   background-size: 474px 1400px;
+   background-position: -222px -26px;
+}
