@@ -1,53 +1,94 @@
 
 /* Hero CSS */
 
-.hero_wrap { 
+.main-slide { 
    width: 100%; 
    height: 100%; 
-   padding: 80px 0 0; 
+   padding: 80px 0 0;  
+   position: relative; 
 }
-
-.hero { 
+.main-slide img,
+.main-slide video { 
    width: 100%; 
    height: 667px; 
-   background-image: url(../img/img_main_slide3.jpg); 
-   position: relative; 
-   overflow: hidden; 
+}
+.main-slide .slide-info .slide-info-box {
+   display: none;
 }
 
-.hero_a { 
+.main-slide .slide-info a { 
    width: 100%; 
    height: 100%; 
    display: block; 
+   background-color: #00c73c;
+   /* position: relative; */
 }
-
-.hero_slide_logo { 
-   width: 134px; 
-   height: 50px; 
-   background-position: 0 -1104px; 
-   position: absolute; 
-   bottom: 70px; 
-   right: 160px; 
-   background-image: url(../img/sprite.png); 
-   background-size: 474px 1400px;
+.slide-logo {
+   position: absolute;
+   right: 160px;
+   background-image: url(../img/sprite.png);
+   background-repeat: no-repeat;
+   background-size: 474px 1500px;
 }
-
-.hero_slide_text_box { 
+.slide-logo.naver {
+   bottom: 75px;
+   width: 136px;
+   height: 30px;
+   background-position: -202px -1140px;
+}
+.slide-logo.gak {
+   bottom: 76px;
+   width: 228px;
+   height: 44px;
+   background-position: -209px -1324px;
+}
+.slide-logo.clova {
+   bottom: 78px;
+   width: 239px;
+   height: 38px;
+   background-position: -209px -1373px;
+}
+.slide-logo.clova_dubbing {
+   bottom: 78px;
+   width: 251px;
+   height: 36px;
+   background-position: 0 -1411px;
+}
+.slide-logo.labs {
+   bottom: 70px;
+   width: 194px;
+   height: 22px;
+   background-position: 0 -1329px;
+}
+.slide-logo.spacegreen {
+   bottom: 70px;
+   width: 134px;
+   height: 55px;
+   background-position: 0 -1180px;
+}
+.slide-text-box { 
    color: rgb(255,255,255); 
    position: absolute; 
    left: 160px; 
    bottom: 157px;
 }
-
-.hero_slide_title { 
+.slide-title { 
    margin-bottom: 32px; 
    font-size: 36px; 
    line-height: 46px;
+   font-family: 'NanumSquare-EB';
 }
-
-.hero_slide_text { 
+.slide-title strong {
+   vertical-align: middle;
+   height: 92px;
+   font-size: 36px;
+   line-height: 46px;
+   letter-spacing: -1px;
+}
+.slide-text { 
    font-size: 15px; 
    line-height: 1.6;
+   height: 48px;
 }
 
 .hero_slide_progressbar { 
@@ -58,6 +99,15 @@
    height: 1px; 
    background-color: rgba(255,255,255,0.3); 
 }
+.hero_slide_progressbar .fill {
+   position: absolute;
+   left: 0;
+   top: 0;
+   height: 1px;
+   width: 16.7%;
+   background-color: #fff;
+   transition: width 1s;
+}
 
 .hero_slide_paging { 
    position: absolute; 
@@ -67,20 +117,27 @@
    color: #fff;
 }
 
-.hero_slide_paging span:nth-child(1) { 
+.hero_slide_paging .current {
+   float: left;
    font-family: 'NanumSquare-EB'; 
 }
-
-.hero_slide_paging span:nth-child(2) { 
-   padding: 0 3px; 
-   color: rgb(214,214,213);
-   font-size: 8px;
+.hero_slide_paging .total {
+   float: left;
+   position: relative;
+   padding-left: 14px;
+   font-family: 'NanumSquare-L';
+   font-size: 12px;
 }
-
-.hero_slide_paging span:nth-child(3) { 
-   font-family: 'NanumSquare-L'; 
+.hero_slide_paging .total:before {
+   content: '';
+   position: absolute;
+   left: 7px;
+   top: 65%;
+   width: 1px;
+   height: 8px;
+   margin-top: -5px;
+   background-color: #d6d6d5;
 }
-
 .hero_btn_prev { 
    width: 46px;
    height: 46px; 
