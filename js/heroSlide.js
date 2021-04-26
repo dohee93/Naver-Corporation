@@ -1,79 +1,96 @@
-let slideContainer = document.getElementsByClassName('slide')[0],
-   slideInfobox = document.getElementsByClassName('slide-info-box'),
-   currentIdx = document.getElementsByClassName('current')[0],
-   slideCount = slideInfobox.length,
-   slideImages = document.querySelectorAll('.slide-item'),
-   fill = document.querySelector('.fill'),
+
+let slideWrapper = document.querySelector('.main-slide'),
+   slideContainer = document.querySelector('.slide'),
+   slides = document.querySelectorAll('.slide-item'),
+   currentIdx = 0,
+   slideCount = slides.length,
+   topHeight = 0,
+   slidePaddingTop = 80,
    screenW = document.documentElement.offsetWidth,
+   screenPadding = 3.5,
    prevBtn = document.querySelector('.hero_btn_prev'),
    nextBtn = document.querySelector('.hero_btn_next');
-let index = 0; 
 
-// 버튼 누르면 슬라이드 이동
-function clickSlide(){
-   // 이전 버튼
-   prevBtn.addEventListener('click', function(ev){
-      index--;
-      if(index < 0) { // index가 -1이 되면 5로 변환
-         index = 5;
-         slideContainer.style.transform = "translate3d(-" + (screenW * (slideCount-1)) + "px, 0px, 0px)";
-         currentIdx.innerHTML = slideCount;
-         fill.style.width = 16.7 * slideCount+'%';
-         slideInfobox[index].style.display = 'block';
-         slideInfobox[0].style.display = 'none';
+// 슬라이드 높이 지정
+function calculateTallestSlide() {
+   for(var i = 0; i < slideCount; i++) {
+      // console.log(slides[i].offsetHeight);
+      if(slides[i].offsetHeight > topHeight) {
+         topHeight = slides[i].offsetHeight;
       }
-      else {
-         slideContainer.style.transform = "translate3d(-" + (screenW * index) + "px, 0px, 0px)";
-         currentIdx.innerHTML = index + 1;
-         fill.style.width = 16.7 * (index + 1) +'%';
-         slideInfobox[index].style.display = 'block';
-         slideInfobox[index + 1].style.display = 'none';
-      }
-   });
-   // 다음 버튼
-   nextBtn.addEventListener('click', function(ev){
-      index++;
-      if(index >= slideCount) { // index가 6이 되면 0로 변환
-         index = 0;
-         slideContainer.style.transform = "translate3d(0px, 0px, 0px)";
-         currentIdx.innerHTML = 1;
-         slideInfobox[index].style.display = 'block';
-         slideInfobox[slideCount - 1].style.display = 'none';
-         fill.style.width = 16.7 * (index + 1) +'%';
-      }
-      else {
-         slideContainer.style.transform = "translate3d(-" + (screenW * index) + "px, 0px, 0px)";
-         currentIdx.innerHTML = index + 1;
-         slideInfobox[index].style.display = 'block';
-         slideInfobox[index - 1].style.display = 'none';
-         fill.style.width = 16.7 * (index + 1) +'%';
-      }
-   });
-}
-
-// 8초 마다 자동 슬라이드 
-function autoChangeSlide(){
-   index++;
-   if(index == slideCount) index = 0;
-   slideInfobox[index].style.display = 'block';
-   
-   if(index == 0) {
-      slideInfobox[slideCount-1].style.display = 'none';
-      slideContainer.style.transform = "translate3d(0px, 0px, 0px)";
-      currentIdx.innerHTML = 1;
-      fill.style.width = 16.7 * (index + 1) +'%';
-   } else {
-      slideInfobox[index-1].style.display = 'none';
-      currentIdx.innerHTML = index + 1;
-      slideContainer.style.transform = "translate3d(-" + (screenW * index) + "px, 0px, 0px)";
-      fill.style.width = 16.7 * (index + 1) +'%';
    }
-   currentIdx.innerHTML = index + 1;
+   slideWrapper.style.height = topHeight + slidePaddingTop + 'px';
+   slideContainer.style.height = topHeight + 'px';
+}
+calculateTallestSlide();
+
+//슬라이드 가로 배열
+for(var i = 0; i < slideCount; i++) {
+   slides[i].style.width = screenW + 'px';
+}
+slideContainer.style.width = screenW * slideCount + 'px';
+
+// 슬라이드 앞 뒤에 이어지는 슬라이드 복사
+makeClone();
+
+function makeClone() {
+   var cloneSlideFirst = slides[0].cloneNode(true);
+   cloneSlideFirst.classList.add('clone');
+   slideContainer.appendChild(cloneSlideFirst);
+
+   var cloneSlideLast = slides[slideCount-1].cloneNode(true);
+   cloneSlideLast.classList.add('clone');
+   slideContainer.prepend(cloneSlideLast);
+
+   updateWidth();
+   setInitialPos();
+   setTimeout(function(){
+      slideContainer.classList.add('animated');
+   }, 100);
 }
 
-function init(){
-   setInterval(autoChangeSlide, 5000);
-   clickSlide();
+function updateWidth(){
+   var currentSlides = document.querySelectorAll('.slide-item');
+   var newSlideCount = currentSlides.length;
+   console.log(currentSlides, newSlideCount);
+   var newWidth = newSlideCount * (screenW + screenPadding ) + 'px';
+   slideContainer.style.width = newWidth;
 }
 
-init();
+function setInitialPos(){
+   var initialTranslateValue = -(screenW + screenPadding);
+   console.log(initialTranslateValue);
+   slideContainer.style.transform = 'translateX(' + initialTranslateValue+ 'px)';
+}
+
+nextBtn.addEventListener('click', function(){
+   moveSlide(currentIdx + 1);
+});
+prevBtn.addEventListener('click', function(){
+   moveSlide(currentIdx - 1);
+});
+
+function moveSlide(num){
+   slideContainer.style.left = -num * (screenW + screenPadding) + 'px';
+   currentIdx = num;
+   if(currentIdx == slideCount){
+      setTimeout(function(){
+         slideContainer.classList.remove('animated');
+         slideContainer.style.left = '0px';
+         currentIdx = 0;
+      }, 500);
+      setTimeout(function(){
+         slideContainer.classList.add('animated');
+      }, 600); 
+   }
+   if(currentIdx == -1){
+      setTimeout(function(){
+         slideContainer.classList.remove('animated');
+         slideContainer.style.left = -(slideCount - 1) * (screenW + screenPadding) + 'px';
+         currentIdx = slideCount - 1;
+      }, 500);
+      setTimeout(function(){
+         slideContainer.classList.add('animated');
+      }, 600); 
+   }
+}
