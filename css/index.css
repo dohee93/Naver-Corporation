@@ -2,29 +2,32 @@
 /* Hero CSS */
 
 .main-slide { 
-   width: 100%; 
-   height: 100%; 
-   padding: 80px 0 0;  
    position: relative; 
+   width: 100%;
+   padding: 80px 0 0;
    overflow: hidden;
+}
+.slide {
+   width: 100%;
+   position: absolute;
+   left: 0;
+   /* border: 4px dotted blue; */
+}
+.slide.animated {
+   transition: left .3s ease-in;
+}
+.slide-item {
+   display: inline-block;
+   width: 100%;
 }
 .main-slide img,
 .main-slide video {
-   width: 100%; 
-   /* height: 82.345679vh; */
-   height: 680px;
-}
-.slide {
-   width: 600%;
-   display: flex;
-   transform: translate3d(0px, 0px, 0px);
-   transition: transform 1s;
-}
-.slide-item {
    width: 100%;
-   float: left;
 }
+
+
 .main-slide .slide-info {
+   display: block;
    position: absolute;
    bottom: 0;
    width: 100%;
@@ -41,14 +44,6 @@
    display: none;
    opacity: 0;
    animation: fadeIn 1s forwards;
-}
-@keyframes fadeIn {
-   0% {
-      opacity: 0;
-   }
-   100% {
-      opacity: 1;
-   }  
 }
 .slide-logo {
    position: absolute;
@@ -117,7 +112,6 @@
    line-height: 1.6;
    height: 48px;
 }
-
 .hero_slide_progressbar { 
    position: absolute; 
    left: 160px; 
@@ -135,7 +129,6 @@
    background-color: #fff;
    transition: width 1s;
 }
-
 .hero_slide_paging { 
    position: absolute; 
    left: 160px; 
@@ -143,7 +136,6 @@
    font-size: 12px; 
    color: #fff;
 }
-
 .hero_slide_paging .current {
    float: left;
    font-family: 'NanumSquare-EB'; 
@@ -171,14 +163,12 @@
    left: 85px; 
    background-position: -296px -99px; 
 }
-
 .hero_btn_next { 
    width: 46px; 
    height: 46px; 
    right: 85px; 
    background-position: -346px -99px; 
 }
-
 .hero_btn_prev, .hero_btn_next { 
    position: absolute; 
    bottom: 198px; 
@@ -186,7 +176,6 @@
    background-size: 474px 1400px; 
    opacity: .8; 
 }
-
 .hero_btn_prev:hover, .hero_btn_next:hover { 
    opacity: 1;
 }
