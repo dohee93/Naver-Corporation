@@ -157,7 +157,7 @@ header:hover {
    min-width: 1100px;
    height: 0px;
    background-color: #1ec545;
-   text-align: center;
+   /* text-align: center; */
    transition: height .3s;
    overflow: hidden;
 }
@@ -169,6 +169,7 @@ header:hover {
    height: 341px;
    padding: 28px 0 0;
    transition: all .3s;
+   background-color: #1ec545;
 }
 .gnb_dropMenu > li.depth_blank {
    margin-bottom: 14px;
@@ -198,7 +199,7 @@ header:hover {
    opacity: .8;
 }
 
-/* .gnb_dropMenu_wrap > li:before,
+.gnb_dropMenu_wrap > li:before,
 .gnb_dropMenu_wrap > li:last-child:before {
    content: '';
    display: block;
@@ -209,9 +210,9 @@ header:hover {
    height: 100%;
    background-color: #4bd16a;
    box-sizing: border-box;
-} */
+}
 /* .slides li:not(:last-child) { */
-/* .gnb_dropMenu_wrap > li:not(:first-child):after {
+.gnb_dropMenu_wrap > li:after {
    content: '';
    display: block;
    position: absolute;
@@ -222,7 +223,57 @@ header:hover {
    height: 100%;
    background-color: #4bd16a;
    box-sizing: border-box;
-}  */
+} 
 .gnb_dropMenu_wrap > li:hover {
    background-color: #0fb93c;
+}
+.gnb_dropMenu_wrap > li:hover:before,
+.gnb_dropMenu_wrap > li:hover:after {
+   display: none;
+}
+
+.gnb_dropMenu_item span:before {
+   content: '';
+   display: block;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 1px;
+   background-color: #fff;
+   transform-origin: 0 0;
+   transform: scaleX(0);
+   transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.gnb_dropMenu_item:hover span:before {
+   transform: scaleX(1);
+}
+.gnb_dropMenu_item:hover .depth {
+   opacity: 1;
+}
+.gnb_dropMenu .classify:first-child {
+   padding-top: 0;
+   border-top: 0;
+}
+.gnb_dropMenu .classify {
+   margin-bottom: 20px;
+   padding-top: 20px;
+   border-top: 1px solid #4bd16a;
+   font-size: 15px;
+}
+.gnb_dropMenu > li:last-child {
+   margin-bottom: 0;
+}
+.gnb_dropMenu > li + .classify {
+   margin-top: 20px;
+}
+.gnb_dropMenu .classify.depth_4 {
+   font-size: 14px;
+}
+.gnb_dropMenu > li.depth_blank {
+   margin-bottom: 14px;
+}
+.gnb_dropMenu .depth_4 span.depth {
+   font-size: 12px;
+   font-family: 'NanumSquare-L';
 }
